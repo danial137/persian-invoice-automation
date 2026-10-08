@@ -1,0 +1,61 @@
+/* A4 invoice printing. */
+@media print {
+  @page {
+    size: A4;
+    margin: 12mm;
+  }
+  body {
+    background: #fff !important;
+    color: #111;
+  }
+  .sidebar,.topbar,.footer,.no-print,.mobile-menu,.overlay {
+    display: none !important;
+  }
+  .app-shell,.main-area,.content {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  .invoice-paper {
+    border: 0;
+    box-shadow: none;
+    margin: 0;
+    padding: 0;
+    break-inside: avoid;
+  }
+  .paper-head {
+    padding-bottom: 14px;
+  }
+  .paper-table th {
+    background: #eee !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  td,th {
+    padding: 9px 6px;
+    font-size: 11px;
+  }
+  .signatures {
+    margin-top: 45px;
+  }
+  .invoice-metadata {
+    margin: 16px 0;
+  }
+}
+.app-shell,.main-area,.content,.panel,.stat-card,.dash-columns>*,.invoice-bottom>* {
+  min-width: 0;
+}
+@media print {
+  .table-wrap {
+    overflow: visible;
+    max-width: none;
+  }
+  .table-wrap table {
+    min-width: 0;
+  }
+  .content {
+    overflow-wrap: normal;
+  }
+}

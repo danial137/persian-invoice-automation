@@ -1,0 +1,273 @@
+/* Responsive layout and overflow. */
+@media (max-width:1170px) {
+  .stats-grid {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+  }
+  .dash-columns {
+    grid-template-columns: 1fr;
+  }
+  .content {
+    padding: 25px;
+  }
+}
+@media (max-width:760px) {
+  .sidebar {
+    transform: translateX(110%);
+    transition: transform .2s;
+  }
+  .sidebar-open {
+    transform: translateX(0);
+  }
+  .main-area {
+    margin-right: 0;
+    width: 100%;
+  }
+  .mobile-menu {
+    display: grid;
+    position: fixed;
+    top: 17px;
+    right: 13px;
+    border: 0;
+    background: #fff;
+    border-radius: 9px;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    z-index: 20;
+    box-shadow: 0 2px 15px #0002;
+  }
+  .overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: #0a122f88;
+    border: 0;
+    z-index: 8;
+  }
+  .topbar {
+    padding: 0 70px 0 15px;
+  }
+  .current-date {
+    display: none;
+  }
+  .content {
+    padding: 22px 14px;
+  }
+  .page-head {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .stats-grid {
+    gap: 10px;
+  }
+  .stat-card {
+    padding: 15px;
+  }
+  .stat-card strong {
+    font-size: 16px;
+  }
+  .form-grid,.invoice-bottom,.invoice-metadata,.paper-end {
+    grid-template-columns: 1fr;
+  }
+  .invoice-paper {
+    padding: 18px;
+  }
+  .paper-head {
+    align-items: flex-start;
+    gap: 20px;
+    flex-direction: column;
+  }
+  .panel {
+    padding: 17px;
+  }
+  .panel-title {
+    flex-wrap: wrap;
+  }
+  .login-screen {
+    grid-template-columns: 1fr;
+  }
+  .login-intro {
+    display: none;
+  }
+  .login-card {
+    padding: 28px;
+  }
+  .head-buttons {
+    width: 100%;
+  }
+}
+.table-wrap {
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  -webkit-overflow-scrolling: touch;
+}
+.table-wrap table {
+  min-width: max-content;
+}
+.table-wrap td.num {
+  display: table-cell;
+}
+.stat-card strong {
+  overflow-wrap: anywhere;
+  line-height: 1.5;
+  font-variant-numeric: tabular-nums;
+}
+.stat-top {
+  gap: 8px;
+  min-width: 0;
+}
+.stat-top>span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.stat-icon {
+  flex-shrink: 0;
+}
+.panel-title>*,.page-head>* {
+  min-width: 0;
+}
+.panel-title {
+  min-width: 0;
+}
+.head-metric,.total-line,.grand-total {
+  min-width: 0;
+}
+.total-line>*,.grand-total>* {
+  min-width: 0;
+}
+.total-line strong,.grand-total strong {
+  overflow-wrap: anywhere;
+  text-align: left;
+}
+.nav-item {
+  min-width: 0;
+}
+.nav-item span {
+  min-width: 0;
+}
+.quick-links a {
+  min-width: 0;
+}
+.quick-links a>div {
+  min-width: 0;
+  flex: 1;
+}
+.quick-links a>svg:last-child {
+  flex-shrink: 0;
+}
+.quick-links a strong,.quick-links a small {
+  overflow-wrap: anywhere;
+}
+.journal summary {
+  flex-wrap: wrap;
+}
+.mini-form {
+  max-width: 100%;
+  min-width: 0;
+}
+.paper-head>*,.paper-business>*,.invoice-metadata>div,.paper-end>* {
+  min-width: 0;
+}
+.paper-business {
+  flex-wrap: wrap;
+}
+.paper-title strong,.invoice-metadata strong {
+  overflow-wrap: anywhere;
+}
+.content {
+  overflow-wrap: break-word;
+}
+input,select,textarea {
+  max-width: 100%;
+}
+@media (max-width:900px) {
+  .dash-columns {
+    grid-template-columns: minmax(0,1fr);
+  }
+  .invoice-bottom {
+    grid-template-columns: minmax(0,1fr);
+  }
+  .topbar {
+    padding-inline: 20px;
+  }
+}
+@media (max-width:760px) {
+  .main-area {
+    width: 100%;
+    min-width: 0;
+  }
+  .stats-grid {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+  }
+  .stat-card {
+    padding: 14px;
+  }
+  .page-head {
+    gap: 12px;
+  }
+  .page-head>.btn {
+    max-width: 100%;
+    white-space: normal;
+  }
+  .panel-title {
+    align-items: flex-start;
+  }
+  .head-buttons {
+    gap: 8px;
+  }
+  .head-buttons .btn {
+    white-space: normal;
+  }
+  .chart {
+    gap: 6px;
+  }
+  .chart-col {
+    min-width: 0;
+  }
+  .chart-col span {
+    text-align: center;
+    font-size: 10px;
+  }
+  .invoice-items-table {
+    min-width: 740px;
+  }
+  .topbar {
+    min-width: 0;
+  }
+  .breadcrumb {
+    overflow-wrap: anywhere;
+  }
+}
+@media (max-width:440px) {
+  .stats-grid {
+    grid-template-columns: minmax(0,1fr);
+  }
+  .stat-card strong {
+    font-size: 20px;
+  }
+  .content {
+    padding: 18px 12px 40px;
+  }
+  .panel {
+    padding: 15px;
+  }
+  .form-grid {
+    grid-template-columns: minmax(0,1fr);
+  }
+  .paper-end,.invoice-metadata {
+    grid-template-columns: minmax(0,1fr);
+  }
+  .paper-business h2 {
+    font-size: 18px;
+  }
+  .paper-title strong {
+    font-size: 20px;
+  }
+  .topbar {
+    padding-inline: 65px 12px;
+  }
+  .top-actions {
+    gap: 6px;
+  }
+}

@@ -1,0 +1,131 @@
+/* Authentication screen. */
+.login-screen {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  background: #f5f7fc;
+}
+.login-intro {
+  background: linear-gradient(155deg,#151d3b,#42358c);
+  padding: 10%;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.login-intro p {
+  color: #c1c8e3;
+}
+.login-highlights {
+  display: grid;
+  gap: 17px;
+}
+.login-highlights>div {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.login-panel {
+  display: grid;
+  place-items: center;
+  padding: 28px;
+}
+.login-card {
+  background: #fff;
+  border-radius: 22px;
+  padding: 45px;
+  width: min(440px,100%);
+  box-shadow: 0 18px 65px #1d275616;
+}
+.login-card h1 {
+  margin: 18px 0 8px;
+}
+.login-card p {
+  color: #8693a7;
+  font-size: 13px;
+}
+.login-card form {
+  display: grid;
+  gap: 18px;
+}
+.login-card label {
+  display: grid;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 13px;
+}
+.login-card input {
+  padding: 14px;
+  border: 1px solid #e2e6f0;
+  border-radius: 10px;
+  min-width: 0;
+}
+.login-card-icon {
+  display: grid;
+  place-items: center;
+  background: #edeaff;
+  color: #6152cc;
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+}
+.login-note {
+  color: #8b96a9;
+  font-size: 11px;
+  margin-top: 16px;
+}
+.mobile-menu,.overlay {
+  display: none;
+}
+.login-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 23px;
+  font-weight: 800;
+  margin-bottom: 30px;
+}
+.login-intro h1 {
+  font-size: 42px;
+  line-height: 1.5;
+}
+.login-intro h1 span {
+  color: #c2b8ff;
+}
+.login-highlights span {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.login-card h2 {
+  font-size: 21px;
+}
+.progress-report .progress-track>div {
+  height: 100%;
+  background: #6b5fdf;
+  border-radius: 9px;
+}
+.progress-label {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  color: #8894a6;
+  font-size: 12px;
+}
+.rank-row>strong {
+  margin-right: auto;
+}
+.rank-row small {
+  display: block;
+  margin-top: 5px;
+  color: #8e99a9;
+}
+.quick-links small {
+  display: block;
+  margin-top: 5px;
+  color: #8794a5;
+}
+.login-note code {
+  direction: ltr;
+  display: inline-block;
+}

@@ -1,0 +1,7 @@
+/* Small shared utilities. */
+/* Contextual validation messages near invoice lines. */
+.form-validation {
+  margin: 12px 0 0;
+  color: #a82d47;
+  font-size: 13px;
+}

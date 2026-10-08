@@ -1,0 +1,173 @@
+generator client {
+  provider = "prisma-client-js"
+}
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMIN
+  ACCOUNTANT
+  SALES
+}
+enum InvoiceType {
+  SALE
+  QUOTE
+}
+enum InvoiceStatus {
+  DRAFT
+  ISSUED
+  PARTIAL
+  PAID
+  CANCELLED
+}
+enum PaymentMethod {
+  CASH
+  CARD
+  TRANSFER
+  OTHER
+}
+enum MovementReason {
+  OPENING
+  SALE
+  CANCELLATION
+  ADJUSTMENT
+}
+model User {
+  id String @id @default(cuid())
+  name String
+  email String @unique
+  passwordHash String
+  role Role @default(SALES)
+  active Boolean @default(true)
+  createdAt DateTime @default(now())
+  invoices Invoice[]
+  journals JournalEntry[]
+}
+model Customer {
+  id String @id @default(cuid())
+  name String
+  phone String?
+  email String?
+  address String?
+  taxId String?
+  createdAt DateTime @default(now())
+  invoices Invoice[]
+}
+model Product {
+  id String @id @default(cuid())
+  sku String @unique
+  name String
+  unit String @default("عدد")
+  priceToman BigInt
+  costToman BigInt @default(0)
+  stock Int @default(0)
+  active Boolean @default(true)
+  createdAt DateTime @default(now())
+  invoiceItems InvoiceItem[]
+  movements InventoryMovement[]
+}
+model Sequence {
+  key String @id
+  current Int @default(0)
+}
+model Invoice {
+  id String @id @default(cuid())
+  number String @unique
+  type InvoiceType
+  status InvoiceStatus
+  customerId String
+  customer Customer @relation(fields:[customerId], references:[id])
+  creatorId String
+  creator User @relation(fields:[creatorId], references:[id])
+  issuedAt DateTime @default(now())
+  dueAt DateTime?
+  notes String?
+  subtotalToman BigInt
+  discountToman BigInt @default(0)
+  taxRate Int @default(0)
+  taxToman BigInt @default(0)
+  totalToman BigInt
+  paidToman BigInt @default(0)
+  items InvoiceItem[]
+  payments Payment[]
+  movements InventoryMovement[]
+  journalEntries JournalEntry[]
+  createdAt DateTime @default(now())
+  @@index([customerId,createdAt])
+  @@index([status,createdAt])
+}
+model InvoiceItem {
+  id String @id @default(cuid())
+  invoiceId String
+  invoice Invoice @relation(fields:[invoiceId],references:[id],onDelete:Restrict)
+  productId String
+  product Product @relation(fields:[productId],references:[id])
+  description String
+  unit String
+  quantity Int
+  unitPriceToman BigInt
+  unitCostToman BigInt
+  lineTotalToman BigInt
+}
+model Payment {
+  id String @id @default(cuid())
+  invoiceId String
+  invoice Invoice @relation(fields:[invoiceId],references:[id])
+  amountToman BigInt
+  method PaymentMethod
+  reference String?
+  note String?
+  paidAt DateTime @default(now())
+  @@index([paidAt])
+}
+model InventoryMovement {
+  id String @id @default(cuid())
+  productId String
+  product Product @relation(fields:[productId],references:[id])
+  invoiceId String?
+  invoice Invoice? @relation(fields:[invoiceId],references:[id])
+  reason MovementReason
+  delta Int
+  createdAt DateTime @default(now())
+}
+model Account {
+  id String @id @default(cuid())
+  code String @unique
+  name String
+  category String
+  active Boolean @default(true)
+  lines JournalLine[]
+}
+model JournalEntry {
+  id String @id @default(cuid())
+  description String
+  source String
+  invoiceId String?
+  invoice Invoice? @relation(fields:[invoiceId],references:[id])
+  createdById String?
+  createdBy User? @relation(fields:[createdById],references:[id])
+  postedAt DateTime @default(now())
+  lines JournalLine[]
+  @@index([postedAt])
+}
+model JournalLine {
+  id String @id @default(cuid())
+  entryId String
+  entry JournalEntry @relation(fields:[entryId],references:[id])
+  accountId String
+  account Account @relation(fields:[accountId],references:[id])
+  debitToman BigInt @default(0)
+  creditToman BigInt @default(0)
+}
+model BusinessSetting {
+  id Int @id @default(1)
+  name String @default("شرکت نمونه")
+  phone String?
+  address String?
+  nationalId String?
+  taxId String?
+  defaultTaxRate Int @default(10)
+  invoiceFooter String?
+}

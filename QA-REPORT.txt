@@ -1,0 +1,6 @@
+Parsed: 67 TS/TSX files; 0 syntax errors
+Files checked: 73; internal imports resolved: 183/183; CSS parsed: 6
+Prisma schema unchanged: YES
+
+Unit tests: 16 passed, 0 failed (Node 22).
+Production build and Prisma CLI were not executable without npm packages.
