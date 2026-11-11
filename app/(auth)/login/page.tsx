@@ -41,7 +41,7 @@ export default async function LoginPage({ searchParams }: {
             </label>
             <SubmitButton label="ورود به سیستم ←" className="btn btn-primary btn-block" />
           </form>
-          <div className="login-note">برای ورود اولیه، مشخصات موجود در فایل <code>.env</code> را استفاده کنید.</div>
+         
         </div>
       </section>
     </main>
